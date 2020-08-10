@@ -7,9 +7,11 @@ class DishDetail extends Component {
     render() { 
         const {dish} = this.props;
         return ( 
-            <div className="row">
-                {this.renderDish(dish)}
-            </div>
+            <div className="container">
+                <div className="row">
+                    {this.renderDish(dish)}
+                </div>
+            </div>    
         );
     }
 
@@ -46,7 +48,7 @@ class DishDetail extends Component {
                     <React.Fragment>
                         <div>
                             <li>{co.comment}</li><br />
-                            <li>-- {co.author}, {this.formatDate(co.date)}</li><br />
+                            <li>-- {co.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(co.date)))}</li><br />
                         </div>             
                     </React.Fragment>
                 );
@@ -63,12 +65,12 @@ class DishDetail extends Component {
         }
     }
 
-    formatDate(date) {    
-        const option = {year: 'numeric', month: 'short', day: 'numeric' };
-        const date1 = new Date(date)
-        const newdate = date1.toLocaleDateString("en-US", option)
-        return newdate;
-    }
+//    formatDate(date) {    
+//        const option = {year: 'numeric', month: 'short', day: 'numeric' };
+//        const date1 = new Date(date)
+//        const newdate = date1.toLocaleDateString("en-US", option)
+//        return newdate;
+//    }
     
 }
 
