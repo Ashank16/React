@@ -1,6 +1,6 @@
 import React from 'react';
-import {Card,CardImg,CardText,CardTitle,CardBody} from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {Card,CardImg,CardText,CardTitle,CardBody,Breadcrumb,BreadcrumbItem} from "reactstrap";
+import { Link } from 'react-router-dom';
 
     const DishDetail = (props) => {       
         
@@ -8,29 +8,39 @@ import "bootstrap/dist/css/bootstrap.min.css";
         return ( 
             <div className="container">
                 <div className="row">
-                    <RenderDish dish={props.dish} />
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
+                    <RenderDish dish={props.dish} comments={props.comments}/>
                 </div>
             </div>    
         );
     }
 
-    function RenderDish({dish}) { 
+    function RenderDish(props) { 
         
-        if (dish!=null) {        
+        if (props.dish!=null) {        
             return (
             <React.Fragment>
                 <div className="col-12 col-md-5 m-1">
                     <Card>
-                        <CardImg width="100%" src={dish.image} alt={dish.name} />
+                        <CardImg width="100%" src={props.dish.image} alt={props.dish.name} />
                         <CardBody>
-                            <CardTitle>{dish.name}</CardTitle>
-                            <CardText>{dish.description}</CardText>
+                            <CardTitle>{props.dish.name}</CardTitle>
+                            <CardText>{props.dish.description}</CardText>
                         </CardBody>
                     </Card>
                 </div>
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    <RenderComments comments={dish.comments} />
+                    <RenderComments comments={props.comments} />
                 </div>
             </React.Fragment>
             );
