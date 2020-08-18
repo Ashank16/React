@@ -188,11 +188,9 @@ class CommentForm extends Component {
                 return(
                     <React.Fragment>
                         <div>
-                            <Fade in>                                             //not working
-                                <li key={co.id}>
-                                <p>{co.comment}</p>                                
-                                <p>-- {co.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(co.date)))}</p>
-                                </li> 
+                            <Fade in>                                     
+                                <li>{co.comment}</li><br />
+                                <li>-- {co.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(co.date)))}</li><br /> 
                             </Fade>
                         </div>  
                     </React.Fragment>
@@ -201,11 +199,12 @@ class CommentForm extends Component {
             );
             return(
                 <ul className="list-unstyled">
-                    <Stagger in>                                                  //not working
+                    <Stagger in>                                          
                         {com}
                         <CommentForm dishId={dishId} postComment={postComment} />
                     </Stagger>  
                 </ul>
+
             )
         }
         else{
