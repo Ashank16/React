@@ -126,7 +126,6 @@ class CommentForm extends Component {
             );
         }
         else if (props.dish != null) {
-            const {dish} = props;
             return ( 
                 <div className="container">
                     <div className="row">

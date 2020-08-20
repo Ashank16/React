@@ -34,11 +34,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Main extends Component{
     
-    constructor(props) {
-        super(props);
-        
-    }
-    
     componentDidMount() {                      //after the view is mounted this function will be called
         this.props.fetchDishes();
         this.props.fetchComments();
