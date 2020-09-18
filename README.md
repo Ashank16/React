@@ -21,7 +21,7 @@ Developed in React (Ver. 16.3), a single page application that serving the websi
 * React Bootstrap 4 components
 * React Animations
 * React
-* Redux
+* React Redux
 * React Router
 * Cross Fetch
 
